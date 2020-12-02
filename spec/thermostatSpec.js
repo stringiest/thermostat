@@ -47,4 +47,19 @@ describe('Thermostat', function(){
     thermostatNew.reset();
     expect(thermostat.temperature).toEqual(20);
   });
+
+  it('if temperature is below 18 you are low-usage', function() {
+    thermostatLow = new Thermostat(17);
+    expect(thermostatLow.currentUsage()).toEqual('low-usage');
+  });
+
+  it('if temperature is between 18 and 25 you are medium-usage', function() {
+    thermostatLow = new Thermostat(21);
+    expect(thermostatLow.currentUsage()).toEqual('medium-usage');
+  });
+
+  it('if temperature is between 18 and 25 you are high-usage', function() {
+    thermostatLow = new Thermostat(27);
+    expect(thermostatLow.currentUsage()).toEqual('high-usage');
+  });
 });
