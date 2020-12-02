@@ -24,13 +24,27 @@ describe('Thermostat', function(){
 
   it('does not go past 25 degrees when being eco friends', function() {
     eMax = new Thermostat(25);
-    eMax.powerSave();
     expect(function(){ eMax.increase(); }).toThrowError('already at maximum temperature, for powersave');
-  })
+  });
 
   it('does not go past 32 degrees when not being eco friends', function() {
     eMax = new Thermostat(32);
     eMax.powerSave();
     expect(function(){ eMax.increase(); }).toThrowError('already at maximum temperature');
-  })
+  });
+
+  it('powersave method is on by default', function() {
+    expect(thermostat.powerSavingMode).toEqual(true);
+  });
+
+  it('powersave can be turned off', function() {
+    thermostat.powerSave();
+    expect(thermostat.powerSavingMode).toEqual(false);
+  });
+
+  it('the temperature can be reset to 20', function() {
+    thermostatNew = new Thermostat(24);
+    thermostatNew.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
 });

@@ -1,7 +1,10 @@
+/*jshint esversion: 6 */
+
 class Thermostat {
+
   constructor(temperature = 20) {
     this.temperature = temperature;
-    this.powerSavingMode = false
+    this.powerSavingMode = true;
   }
 
   increase() {
@@ -26,7 +29,11 @@ class Thermostat {
     if(this.powerSavingMode === true) {
       this.powerSavingMode = false;
     } else {
-      this.powerSavingMode = true
+      this.powerSavingMode = true;
     }
+  }
+
+  reset() {
+    this.temperature = 20;
   }
 }
