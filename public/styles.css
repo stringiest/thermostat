@@ -1,0 +1,44 @@
+body {
+  background-color: peachpuff;
+  font-family: Arial, sans-serif;
+}
+h1 {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: tomato;
+}
+h3 {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: mediumseagreen;
+}
+p {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  color: tomato;
+  font-weight: bold;
+}
+label {
+  font-family: Arial, sans-serif;
+}
+form {
+  font-family: Arial, sans-serif;
+}
+input {
+  text-align: center;
+  background-color: darkmagenta;
+  color: white;
+}
+.container {
+  height: 200px;
+  position: relative;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

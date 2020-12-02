@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="./public/styles.css">
+  </head>
+  <body>
+  <h1>Thermostat</h1>
+
+  <h3>Temperature control:</h3>
+  <div class="container">
+  <div class="center">
+  <input type="button" onclick="thermostat.increase()" value="🔼">
+  <input type="button" onclick="thermostat.decrease()" value="🔽">
+  <input type="button" onclick="thermostat.reset()" value="Reset 🔁">
+  <input type="button" onclick="thermostat.powerSave()" value="Eco 🌎">
+</div>
+</div>
+  <p>Eco mode is on: <%=thermostat.powerSavingMode%></p>
+  <br>
+  <br>
+  <p> Current usage: <%=thermostat.currentUsage%></p>
+
+</body>
+</html>
