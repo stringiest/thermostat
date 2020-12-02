@@ -21,4 +21,16 @@ describe('Thermostat', function(){
     thermostatMin = new Thermostat(10);
     expect(function(){ thermostatMin.decrease(); }).toThrowError('already at minimum temperature');
   });
+
+  it('does not go past 25 degrees when being eco friends', function() {
+    eMax = new Thermostat(25);
+    eMax.powerSave();
+    expect(function(){ eMax.increase(); }).toThrowError('already at maximum temperature, for powersave');
+  })
+
+  it('does not go past 32 degrees when not being eco friends', function() {
+    eMax = new Thermostat(32);
+    eMax.powerSave();
+    expect(function(){ eMax.increase(); }).toThrowError('already at maximum temperature');
+  })
 });
