@@ -1,11 +1,11 @@
 body {
-  background-color: peachpuff;
+  background-color: palegreen;
   font-family: Arial, sans-serif;
 }
 h1 {
   font-family: Arial, sans-serif;
   text-align: center;
-  color: tomato;
+  color: mediumseagreen;
 }
 h3 {
   font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@ h3 {
 p {
   font-family: Arial, sans-serif;
   text-align: center;
-  color: tomato;
+  color: mediumseagreen;
   font-weight: bold;
 }
 label {
@@ -26,7 +26,7 @@ form {
 }
 input {
   text-align: center;
-  background-color: darkmagenta;
+  background-color: grey;
   color: white;
 }
 .container {
