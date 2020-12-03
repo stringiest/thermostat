@@ -5,8 +5,8 @@ class Thermostat {
   constructor(temperature = 20) {
     this.temperature = temperature;
     this.powerSavingMode = true;
-    this.MINTEMPERATURE = 10;
-    this.MAXTEMPERATURE = 32;
+    this.MIN_TEMPERATURE = 10;
+    this.MAX_TEMPERATURE = 32;
     this.ECOMAXTEMP = 25;
     this.DEFAULTTEMP = 20;
     this.MEDENERGYFLOOR = 18;
@@ -18,29 +18,40 @@ class Thermostat {
   }
 
   increase() {
-    if(this.powerSavingMode === true && this.temperature === this.ECOMAXTEMP) {
-      throw new Error('already at maximum temperature, for powersave');
-    } else if(this.temperature === this.MAXTEMPERATURE){
-      throw new Error('already at maximum temperature');
-    }
+    if (this.isMaximumTemperature()) {
+    return;
+  }
     this.temperature++;
-    return this.temperature;
   }
 
   decrease() {
-    if(this.temperature === this.MINTEMPERATURE) {
-      throw new Error('already at minimum temperature');
+    if (this.isMinimumTemperature()) {
+      return;
     }
-    this.temperature--;
-    return this.temperature;
+      this.temperature--;
   }
 
-  powerSave() {
-    if(this.powerSavingMode === true) {
-      this.powerSavingMode = false;
-    } else {
-      this.powerSavingMode = true;
+  isMaximumTemperature() {
+    if (this.isPowerSaveOn() === false) {
+      return this.temperature === this.MAX_TEMPERATURE;
     }
+    return this.temperature === this.ECOMAXTEMP;
+  }
+
+  isMinimumTemperature() {
+    return this.temperature === this.MIN_TEMPERATURE;
+  }
+
+  powerSaveOn() {
+    this.powerSavingMode = true;
+  }
+
+  powerSaveOff() {
+    this.powerSavingMode = false;
+  }
+
+  isPowerSaveOn() {
+    return this.powerSavingMode === true;
   }
 
   reset() {
@@ -50,10 +61,11 @@ class Thermostat {
   currentUsage() {
     if(this.temperature < this.MEDENERGYFLOOR) {
       return 'low-usage';
-    } else if(this.temperature <= this.MEDENERGYCEIL) {
-      return 'medium-usage';
-    } else {
-      return 'high-usage';
     }
+    if(this.temperature <= this.MEDENERGYCEIL) {
+      return 'medium-usage';
+    }
+      return 'high-usage';
   }
+  
 }

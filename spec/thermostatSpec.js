@@ -10,27 +10,35 @@ describe('Thermostat', function(){
   });
 
   it('increases the temperature', function() {
-    expect(thermostat.increase()).toEqual(21);
+    thermostat.increase();
+    expect(thermostat.getCurrentTemperature()).toEqual(21);
   });
 
   it('decreases the temperature', function() {
-    expect(thermostat.decrease()).toEqual(19);
+    thermostat.decrease();
+    expect(thermostat.getCurrentTemperature()).toEqual(19);
   });
 
   it('does not decrease temperature below 10 degrees', function() {
-    thermostatMin = new Thermostat(10);
-    expect(function(){ thermostatMin.decrease(); }).toThrowError('already at minimum temperature');
+    for (var i = 0; i < 11; i++) {
+      thermostat.decrease();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(10);
   });
 
   it('does not go past 25 degrees when being eco friends', function() {
-    eMax = new Thermostat(25);
-    expect(function(){ eMax.increase(); }).toThrowError('already at maximum temperature, for powersave');
+    for (var i = 0; i < 6; i++) {
+      thermostat.increase();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(25);
   });
 
   it('does not go past 32 degrees when not being eco friends', function() {
-    eMax = new Thermostat(32);
-    eMax.powerSave();
-    expect(function(){ eMax.increase(); }).toThrowError('already at maximum temperature');
+    thermostat.powerSaveOff();
+    for (var i = 0; i < 13; i++) {
+      thermostat.increase();
+    }
+    expect(thermostat.getCurrentTemperature()).toEqual(32);
   });
 
   it('powersave method is on by default', function() {
@@ -38,7 +46,7 @@ describe('Thermostat', function(){
   });
 
   it('powersave can be turned off', function() {
-    thermostat.powerSave();
+    thermostat.powerSaveOff();
     expect(thermostat.powerSavingMode).toEqual(false);
   });
 
