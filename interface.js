@@ -17,9 +17,20 @@ $(document).ready(function() {
     updateTemperature(); // update view
   });
 
+  $('#powerSaveOn').on('click', function() { // event listener
+    thermostat.powerSaveOn(); // update model
+    $('#power-saving-status').text('Eco mode is on');
+    updateTemperature(); // update view
+  });
 
+  $('#powerSaveOff').on('click', function() { // event listener
+    thermostat.powerSaveOff(); // update model
+    $('#power-saving-status').text('Eco mode is off');
+    updateTemperature(); // update view
+  });
 
   function updateTemperature() {
     $('#temperature').text(thermostat.temperature);
+    $('#temperature').attr('class', thermostat.currentUsage());
   }
 });

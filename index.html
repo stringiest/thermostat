@@ -5,8 +5,8 @@
   </head>
   <body>
     <section>
-    <h1>Thermostat</h1>
-    <h2 id="temperature"></h2>
+    <h2>Thermostat</h2>
+    <h1 id="temperature"></h1>
 
     <h3>Temperature control:</h3>
     <div class="container">
@@ -14,14 +14,14 @@
     <button id="temperature-up">🔼</button>
     <button id="temperature-down">🔽</button>
     <button id="reset">Reset 🔁</button>
-    <button id="powerSave">Eco 🌎</button>
+    <button id="powerSaveOn">Eco mode on🌎</button>
+    <button id="powerSaveOff">Eco mode off☠️</button>
   </div>
   </div>
-    <p>Eco mode is on: <span id="powerSavingMode"></span></p>
+    <p><span id="power-saving-status"></span></p>
     <br>
     <br>
-    <p> Current usage: <span id="currentUsage"></span></p>
-  </section>
+    </section>
   <script src="src/thermostat.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="interface.js"></script>
